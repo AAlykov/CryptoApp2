@@ -1,11 +1,11 @@
-package com.example.cryptoapp2.adapters
+package com.example.cryptoapp2.presentation.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cryptoapp2.pojo.CoinPriceInfo
+import com.example.cryptoapp2.data.model.CoinPriceInfo
 import com.example.cryptoapp2.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_coin_info.view.*

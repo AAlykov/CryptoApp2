@@ -1,11 +1,12 @@
-package com.example.cryptoapp2
+package com.example.cryptoapp2.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.cryptoapp2.adapters.CoinInfoAdapter
-import com.example.cryptoapp2.pojo.CoinPriceInfo
+import com.example.cryptoapp2.R
+import com.example.cryptoapp2.presentation.adapters.CoinInfoAdapter
+import com.example.cryptoapp2.data.model.CoinPriceInfo
 import kotlinx.android.synthetic.main.activity_coin_prce_list.*
 
 class CoinPriceListActivity : AppCompatActivity() {
