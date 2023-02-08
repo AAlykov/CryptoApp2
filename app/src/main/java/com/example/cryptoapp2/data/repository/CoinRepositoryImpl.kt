@@ -44,7 +44,7 @@ class CoinRepositoryImpl(private val application: Application): CoinRepositoryIn
             } catch (e: Exception) {
 
             }
-            delay(10000)
+            delay(5000)
 
         }
     }
