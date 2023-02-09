@@ -3,9 +3,12 @@ package com.example.cryptoapp2.data.repository
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
+import androidx.work.ExistingWorkPolicy
+import androidx.work.WorkManager
 import com.example.cryptoapp2.data.database.AppDatabase
 import com.example.cryptoapp2.data.mapper.CoinMapper
 import com.example.cryptoapp2.data.network.ApiFactory
+import com.example.cryptoapp2.data.workers.RefreshDataWorker
 import com.example.cryptoapp2.domain.CoinInfo
 import com.example.cryptoapp2.domain.CoinRepositoryInterface
 import kotlinx.coroutines.delay
@@ -31,7 +34,16 @@ class CoinRepositoryImpl(private val application: Application): CoinRepositoryIn
         }
     }
 
-    override suspend fun loadData() {
+    //override suspend fun loadData() {
+    override fun loadData() {
+        val workManager = WorkManager.getInstance(application)
+        workManager.enqueueUniqueWork(
+            RefreshDataWorker.NAME,
+            ExistingWorkPolicy.REPLACE,
+            RefreshDataWorker.makeRequest()
+        )
+        /*
+        //Запускается
         while (true) {
             try {  //самая простая обработка ошибки при работе с корутинами
                 val topCoins = apiService.getTopCoinsInfo(limit = 50)  //получили топ-50
@@ -46,6 +58,6 @@ class CoinRepositoryImpl(private val application: Application): CoinRepositoryIn
             }
             delay(5000)
 
-        }
+        }*/
     }
 }
